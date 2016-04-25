@@ -8,4 +8,8 @@ public enum Strategy {
 	ROCK,
 	PAPER,
 	SCISSORS;
+
+	public boolean isSuperiorTo(Strategy otherStrategy) {
+		return false;
+	}
 }
