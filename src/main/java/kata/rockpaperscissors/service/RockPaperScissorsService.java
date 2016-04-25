@@ -1,11 +1,20 @@
 package kata.rockpaperscissors.service;
 
+import java.util.Random;
 import kata.rockpaperscissors.model.Outcome;
 import kata.rockpaperscissors.model.Strategy;
 import org.springframework.stereotype.Service;
 
 @Service
 public class RockPaperScissorsService {
+
+	Random random = new Random();
+
+	public Strategy getRandomStrategy() {
+		Strategy[] strategies = Strategy.values();
+
+		return strategies[random.nextInt(strategies.length)];
+	}
 
 	public Outcome play(Strategy playerChoosenStrategy, Strategy computerChoosenStrategy) {
 
