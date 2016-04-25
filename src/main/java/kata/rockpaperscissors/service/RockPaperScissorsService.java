@@ -5,10 +5,13 @@ import kata.rockpaperscissors.model.Outcome;
 import kata.rockpaperscissors.model.Strategy;
 import org.springframework.stereotype.Service;
 
+/**
+ * Executes the RPC game logic by comparing the input parameters and returning the proper outcome.
+ */
 @Service
 public class RockPaperScissorsService {
 
-	Random random = new Random();
+	private Random random = new Random();
 
 	public Strategy getRandomStrategy() {
 		Strategy[] strategies = Strategy.values();
