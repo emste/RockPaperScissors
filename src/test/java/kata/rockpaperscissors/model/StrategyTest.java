@@ -10,6 +10,7 @@ import org.junit.runners.Parameterized.Parameters;
 import static kata.rockpaperscissors.model.Strategy.PAPER;
 import static kata.rockpaperscissors.model.Strategy.ROCK;
 import static kata.rockpaperscissors.model.Strategy.SCISSORS;
+import static kata.rockpaperscissors.model.Strategy.WELL;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
@@ -23,12 +24,19 @@ public class StrategyTest {
 			{ROCK, PAPER, false},
 			{ROCK, SCISSORS, true},
 			{ROCK, ROCK, false},
+			{ROCK, WELL, false},
 			{PAPER, SCISSORS, false},
 			{PAPER, ROCK, true},
 			{PAPER, PAPER, false},
+			{PAPER, WELL, true},
 			{SCISSORS, ROCK, false},
 			{SCISSORS, PAPER, true},
-			{SCISSORS, SCISSORS, false}
+			{SCISSORS, SCISSORS, false},
+			{SCISSORS, WELL, false},
+			{WELL, WELL, false},
+			{WELL, SCISSORS, true},
+			{WELL, ROCK, true},
+			{WELL, PAPER, false}
 		});
 	}
 
