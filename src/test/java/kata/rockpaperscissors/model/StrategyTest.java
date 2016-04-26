@@ -14,6 +14,9 @@ import static kata.rockpaperscissors.model.Strategy.WELL;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+/**
+ * Tests all possible strategy combinations.
+ */
 @RunWith(Parameterized.class)
 public class StrategyTest {
 

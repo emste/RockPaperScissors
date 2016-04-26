@@ -1,6 +1,8 @@
 package kata.rockpaperscissors.service;
 
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Set;
 import kata.rockpaperscissors.model.Outcome;
 import kata.rockpaperscissors.model.Strategy;
 import org.springframework.stereotype.Service;
@@ -13,13 +15,22 @@ public class RockPaperScissorsService {
 
 	private Random random = new Random();
 
-	public Strategy getRandomStrategy() {
-		Strategy[] strategies = Strategy.values();
+	public Strategy getRandomStrategy(Set<Strategy> allowedStrategies) {
 
-		return strategies[random.nextInt(strategies.length)];
+		if (allowedStrategies.isEmpty()) {
+			throw new IllegalArgumentException("There needs to be at least one allowed strategy!");
+		}
+
+		int randomIndexInBound = random.nextInt(allowedStrategies.size());
+
+		return new ArrayList<>(allowedStrategies).get(randomIndexInBound);
 	}
 
-	public Outcome play(Strategy playerChoosenStrategy, Strategy computerChoosenStrategy) {
+	public Outcome play(Set<Strategy> allowedStrategies, Strategy playerChoosenStrategy, Strategy computerChoosenStrategy) {
+
+		if (!allowedStrategies.contains(playerChoosenStrategy) || !allowedStrategies.contains(computerChoosenStrategy)) {
+			throw new IllegalArgumentException("Only allowed strategies must be used: " + allowedStrategies.toString());
+		}
 
 		if (playerChoosenStrategy == computerChoosenStrategy) {
 			return Outcome.DRAW;
